@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="test3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="passport">
+          <Key>
+            <PropertyRef Name="passportId" />
+          </Key>
+          <Property Name="userId" Type="nvarchar" MaxLength="50" />
+          <Property Name="country" Type="nvarchar" MaxLength="50" />
+          <Property Name="state" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="pin" Type="int" />
+          <Property Name="typeOfService" Type="nvarchar" MaxLength="50" />
+          <Property Name="bookletType" Type="nvarchar" MaxLength="50" />
+          <Property Name="issueDate" Type="date" />
+          <Property Name="passportId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="expiryDate" Type="date" />
+          <Property Name="amount" Type="float" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="user_registration">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="dob" Type="date" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="contactNo" Type="int" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="qualification" Type="nvarchar" MaxLength="50" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="hintQuestion" Type="nvarchar" MaxLength="500" />
+          <Property Name="hintAnswer" Type="nvarchar" MaxLength="1000" />
+          <Property Name="citizenType" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="visa">
+          <Key>
+            <PropertyRef Name="visaId" />
+          </Key>
+          <Property Name="userId" Type="nvarchar" MaxLength="50" />
+          <Property Name="country" Type="nvarchar" MaxLength="50" />
+          <Property Name="occupation" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateOfApplication" Type="date" />
+          <Property Name="visaId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateOfIssue" Type="date" />
+          <Property Name="dateOfExpiry" Type="date" Nullable="false" />
+          <Property Name="cost" Type="float" />
+          <Property Name="passportId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_passport_user_registration">
+          <End Role="user_registration" Type="Self.user_registration" Multiplicity="0..1" />
+          <End Role="passport" Type="Self.passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_registration">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="passport">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_visa_user_registration">
+          <End Role="user_registration" Type="Self.user_registration" Multiplicity="0..1" />
+          <End Role="visa" Type="Self.visa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_registration">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="visa">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="test3ModelStoreContainer">
+          <EntitySet Name="passport" EntityType="Self.passport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_registration" EntityType="Self.user_registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="visa" EntityType="Self.visa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_passport_user_registration" Association="Self.FK_passport_user_registration">
+            <End Role="user_registration" EntitySet="user_registration" />
+            <End Role="passport" EntitySet="passport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_visa_user_registration" Association="Self.FK_visa_user_registration">
+            <End Role="user_registration" EntitySet="user_registration" />
+            <End Role="visa" EntitySet="visa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="test3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="passport">
+          <Key>
+            <PropertyRef Name="passportId" />
+          </Key>
+          <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pin" Type="Int32" />
+          <Property Name="typeOfService" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="bookletType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="issueDate" Type="DateTime" Precision="0" />
+          <Property Name="passportId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="expiryDate" Type="DateTime" Precision="0" />
+          <Property Name="amount" Type="Double" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_registration" Relationship="Self.FK_passport_user_registration" FromRole="passport" ToRole="user_registration" />
+        </EntityType>
+        <EntityType Name="user_registration">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="contactNo" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hintQuestion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="hintAnswer" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="citizenType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="passports" Relationship="Self.FK_passport_user_registration" FromRole="user_registration" ToRole="passport" />
+          <NavigationProperty Name="visas" Relationship="Self.FK_visa_user_registration" FromRole="user_registration" ToRole="visa" />
+        </EntityType>
+        <EntityType Name="visa">
+          <Key>
+            <PropertyRef Name="visaId" />
+          </Key>
+          <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dateOfApplication" Type="DateTime" Precision="0" />
+          <Property Name="visaId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateOfIssue" Type="DateTime" Precision="0" />
+          <Property Name="dateOfExpiry" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cost" Type="Double" />
+          <Property Name="passportId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_registration" Relationship="Self.FK_visa_user_registration" FromRole="visa" ToRole="user_registration" />
+        </EntityType>
+        <Association Name="FK_passport_user_registration">
+          <End Role="user_registration" Type="Self.user_registration" Multiplicity="0..1" />
+          <End Role="passport" Type="Self.passport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_registration">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="passport">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_visa_user_registration">
+          <End Role="user_registration" Type="Self.user_registration" Multiplicity="0..1" />
+          <End Role="visa" Type="Self.visa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_registration">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="visa">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="test3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="passports" EntityType="Self.passport" />
+          <EntitySet Name="user_registration" EntityType="Self.user_registration" />
+          <EntitySet Name="visas" EntityType="Self.visa" />
+          <AssociationSet Name="FK_passport_user_registration" Association="Self.FK_passport_user_registration">
+            <End Role="user_registration" EntitySet="user_registration" />
+            <End Role="passport" EntitySet="passports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_visa_user_registration" Association="Self.FK_visa_user_registration">
+            <End Role="user_registration" EntitySet="user_registration" />
+            <End Role="visa" EntitySet="visas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="test3ModelStoreContainer" CdmEntityContainer="test3Entities">
+          <EntitySetMapping Name="passports">
+            <EntityTypeMapping TypeName="test3Model.passport">
+              <MappingFragment StoreEntitySet="passport">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="pin" ColumnName="pin" />
+                <ScalarProperty Name="typeOfService" ColumnName="typeOfService" />
+                <ScalarProperty Name="bookletType" ColumnName="bookletType" />
+                <ScalarProperty Name="issueDate" ColumnName="issueDate" />
+                <ScalarProperty Name="passportId" ColumnName="passportId" />
+                <ScalarProperty Name="expiryDate" ColumnName="expiryDate" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_registration">
+            <EntityTypeMapping TypeName="test3Model.user_registration">
+              <MappingFragment StoreEntitySet="user_registration">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="contactNo" ColumnName="contactNo" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="qualification" ColumnName="qualification" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="hintQuestion" ColumnName="hintQuestion" />
+                <ScalarProperty Name="hintAnswer" ColumnName="hintAnswer" />
+                <ScalarProperty Name="citizenType" ColumnName="citizenType" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="visas">
+            <EntityTypeMapping TypeName="test3Model.visa">
+              <MappingFragment StoreEntitySet="visa">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="occupation" ColumnName="occupation" />
+                <ScalarProperty Name="dateOfApplication" ColumnName="dateOfApplication" />
+                <ScalarProperty Name="visaId" ColumnName="visaId" />
+                <ScalarProperty Name="dateOfIssue" ColumnName="dateOfIssue" />
+                <ScalarProperty Name="dateOfExpiry" ColumnName="dateOfExpiry" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="passportId" ColumnName="passportId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
