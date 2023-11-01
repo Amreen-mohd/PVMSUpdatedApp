@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using(Html.BeginForm())
+  {
+    <table>
+        <tr>UserId<td>@Html.Hidden("userId")</td></tr>
+        <tr>
+            <td>FirstName</td><td>@Html.TextBox("firstName")</td></tr>
+            <tr><td>SurName</td><td>@Html.TextBox("lastName")</td></tr>
+           <tr> <td>Date Of Birth</td><td>@Html.TextBox("dob")</td></tr>
+          <tr>  <td>Address</td><td>@Html.TextBox("address")</td></tr>
+            <tr><td>ContactNo</td><td>@Html.TextBox("contactNo")</td></tr>
+            <tr><td>Email Address</td><td>@Html.TextBox("email")</td></tr>
+            <tr><td>Qualification</td><td>@Html.TextBox("qualification")</td></tr>
+           <tr> <td>Gender</td><td>@Html.TextBox("gender")</td></tr>
+            @*<tr><td>ApplyType</td><td>@Html.TextBox("citizenType")</td></tr>*@
+           <tr> <td>Hint Question</td><td>@Html.TextBox("hintQuestion")</td></tr>
+            <tr><td>Hint Answer</td><td>@Html.TextBox(" hintAnswer")</td> </tr>
+        <tr><td><input type="submit" id="sub" value="submit"></td></tr>
+    </table>
+   }
+

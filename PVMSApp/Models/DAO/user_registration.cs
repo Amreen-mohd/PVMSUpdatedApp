@@ -9,9 +9,11 @@
 
 namespace PVMSApp.Models.DAO
 {
+    using PVMSApp.Models.BL;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class user_registration
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,13 +22,21 @@ namespace PVMSApp.Models.DAO
             this.passports = new HashSet<passport>();
             this.visas = new HashSet<visa>();
         }
+        
     
         public string userId { get; set; }
+        //[Required(ErrorMessage ="FirstName cannot be blank")]
         public string firstName { get; set; }
+        //[Required(ErrorMessage = "LastName cannot be blank")]
         public string lastName { get; set; }
+        //[DobValidation(ErrorMessage="Dob must be less than today's date")]
         public Nullable<System.DateTime> dob { get; set; }
+        //[Required(ErrorMessage = "Address cannot be blank")]
         public string address { get; set; }
+        //[StringLength(10,ErrorMessage ="Must have 10 digits")]
+        //[RegularExpression(pattern:"^[6-9][0-0]{9}",ErrorMessage ="Invalid PhoneNo")]
         public Nullable<int> contactNo { get; set; }
+       
         public string email { get; set; }
         public string qualification { get; set; }
         public string gender { get; set; }

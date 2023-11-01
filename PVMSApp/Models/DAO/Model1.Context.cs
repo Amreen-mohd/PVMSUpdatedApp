@@ -13,10 +13,10 @@ namespace PVMSApp.Models.DAO
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class test3Entities : DbContext
+    public partial class test3Entities1 : DbContext
     {
-        public test3Entities()
-            : base("name=test3Entities")
+        public test3Entities1()
+            : base("name=test3Entities1")
         {
         }
     
