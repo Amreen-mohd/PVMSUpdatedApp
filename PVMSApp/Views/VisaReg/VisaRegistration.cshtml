@@ -1,0 +1,149 @@
+﻿@model PVMSApp.Models.DAO.visa
+
+@{
+    Layout = "~/Views/Shared/_PresentMyLogin.cshtml";
+    ViewBag.Title = "VisaRegistration";
+}
+
+<h2>VisaRegistration</h2>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+    .form {
+        display: inline-block;
+        background-color: #d5d8ec;
+        position: relative;
+        top: 4px;
+        margin-top: 200px;
+        margin-left: 500px;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+        width:500px;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        background: url("https://www.freevector.com/uploads/vector/preview/2446/FreeVector-Continents-Map.jpg");
+        background-size: contain;
+    }
+
+    .form-input {
+        padding: 5px;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 5px 0;
+    }
+
+    .submit-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .radio-button {
+        margin-right: 5px;
+    }
+</style>
+@*<script>
+    $(document).ready(function () {
+        //$("#userid").change(function () {
+        //    $.ajax({
+        //        type: "POST",
+        //        url: "/VisaReg/VisaRegg/",
+        //        data: "{'uid':'" + $("#userid").val() + "'}",
+        //        dataType: "json",
+        //        contentType: "application/json;charset=utf-8",
+        //        success: function (data) {
+        //            $("#msg").text(data);
+        //        },
+        //        error: function (x, err) {
+        //            alert(x.responseText);
+        //            alert(x.readyState);
+        //        }
+        //    });
+        //});
+    //    $("#passportid").change(function () {
+    //        $.ajax({
+    //            type: "POST",
+    //            url: "/VisaReg/VisaPass/",
+    //            data: "{'pid':'" + $("#passportid").val() + "','uid':'"+$("#userid").val()+"'}",
+    //            dataType: "json",
+    //            contentType: "application/json;charset=utf-8",
+    //            success: function (data) {
+    //                $("#msgg").text(data);
+    //            },
+    //            error: function (x, err) {
+    //                alert(x.responseText);
+    //                alert(x.readyState);
+    //            }
+    //        });
+    //    });
+    //});
+
+</script>*@
+<div class="container">
+    <div class="form">
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tr>
+                    <td>User Id:</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.userId, new { id="userId",@class = "form-input" } )
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Passport Id:</td>
+                    <td>
+                        @Html.TextBoxFor(model => model.passportId, new { id = "passportid", @class = "form-input" } )
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.passportId, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td>
+                        @Html.DropDownListFor(model => model.country, new SelectList(ViewBag.vlist, "Country", "Country"), "Select", new { @class = "form-input" } )
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.country, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Occupation:
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(model => model.occupation, new SelectList(ViewBag.vlist, "Occupation", "Occupation"), "Select", new { @class = "form-input" } )
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.occupation, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr class="date" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+                    <td>Date of Application:</td>
+                    <td style="position:relative;left:40px">
+                        @DateTime.Now.ToString("yyyy-MM-dd")
+                    </td>
+                    <td>@Html.ValidationMessage("doc", new { style = "color: red;" })</td>
+<tr>
+                    <td><input type="submit" class="submit-button" value="Create" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

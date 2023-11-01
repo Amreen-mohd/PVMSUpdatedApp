@@ -18,15 +18,15 @@ namespace PVMSApp.Models.DAO
         public string country { get; set; }
         public string state { get; set; }
         public string city { get; set; }
-        public Nullable<int> pin { get; set; }
+        public int pin { get; set; }
         public string typeOfService { get; set; }
         public string bookletType { get; set; }
-        public Nullable<System.DateTime> issueDate { get; set; }
+        public System.DateTime issueDate { get; set; }
         public string passportId { get; set; }
-        public Nullable<System.DateTime> expiryDate { get; set; }
-        public Nullable<double> amount { get; set; }
+        public System.DateTime expiryDate { get; set; }
+        public double amount { get; set; }
         public string status { get; set; }
     
-        public virtual user_registration user_registration { get; set; }
+        public virtual user_registration2 user_registration2 { get; set; }
     }
 }

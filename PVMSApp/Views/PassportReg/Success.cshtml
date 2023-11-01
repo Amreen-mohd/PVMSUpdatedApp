@@ -1,0 +1,16 @@
+﻿@model PVMSApp.Models.DAO.passport
+@{
+    ViewBag.Title = "Success";
+}
+
+<h2 style="text-align:center">Passport Registration Successful</h2>
+
+<p style="text-align:center">
+    <h4>
+        Need the passport number while giving payment<br /> Please
+        note down your Id
+        @Model.passportId
+        ”<br />. Passport application cost is Rs.
+            @Model.amount
+    </h4>
+</p>

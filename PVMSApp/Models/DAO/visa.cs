@@ -17,13 +17,14 @@ namespace PVMSApp.Models.DAO
         public string userId { get; set; }
         public string country { get; set; }
         public string occupation { get; set; }
-        public Nullable<System.DateTime> dateOfApplication { get; set; }
+        public System.DateTime dateOfApplication { get; set; }
         public string visaId { get; set; }
-        public Nullable<System.DateTime> dateOfIssue { get; set; }
+        public System.DateTime dateOfIssue { get; set; }
         public System.DateTime dateOfExpiry { get; set; }
-        public Nullable<double> cost { get; set; }
+        public double cost { get; set; }
         public string passportId { get; set; }
+        public string status { get; set; }
     
-        public virtual user_registration user_registration { get; set; }
+        public virtual user_registration2 user_registration2 { get; set; }
     }
 }

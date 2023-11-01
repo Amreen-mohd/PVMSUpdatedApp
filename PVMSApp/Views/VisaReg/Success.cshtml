@@ -1,0 +1,21 @@
+﻿@model IEnumerable<PVMSApp.Models.DAO.visa>
+@{
+    ViewBag.Title = "Success";
+}
+
+<h2 style="text-align:center">Visa Registration Successful</h2>
+@foreach (var item in Model)
+{
+
+
+<p>Dear User your Visa request has been accepted successfully
+with Visaid <h2>@item.visaId</h2><br/>
+    User Id @item.userId<br/>
+       Destination @item.country<br />
+            Employee Occupation @item.occupation<br />
+                Date of Application @item.dateOfApplication<br />
+                    Date of Issue @item.dateOfIssue<br />
+                        Date of Expiry @item.dateOfExpiry<br />
+                            Registration Cost @item.cost<br />
+        </p>
+    }

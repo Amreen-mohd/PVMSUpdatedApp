@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+}
+
+<h2>Success</h2>
+
+<h2 style="text-align:center">Visa Cancellation Successful</h2>
+
+@foreach (var item in Model)
+{
+    <p style="text-align:center">
+        <h4>
+            “Your request has been submitted successfully.<br /> Please
+            pay @item.cost to complete the cancellation process”
+          <br />.
+
+        </h4>
+    </p>
+
+}
+
+
+

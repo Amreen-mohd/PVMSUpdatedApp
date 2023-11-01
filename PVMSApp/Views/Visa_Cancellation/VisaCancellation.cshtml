@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_PresentMyLogin.cshtml";
+    ViewBag.Title = "VisaCancellation";
+}
+
+<style>
+    .form {
+        display: inline-block;
+        background-color: #d5d8ec;
+        position: relative;
+        top: 4px;
+        margin-top: 200px;
+        margin-left: 500px;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        background: url("https://www.freevector.com/uploads/vector/preview/2446/FreeVector-Continents-Map.jpg");
+        background-size: contain;
+    }
+    .form-input {
+        padding: 5px;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 5px 0;
+    }
+
+    .submit-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .radio-button {
+        margin-right: 5px;
+    }
+</style>
+<div class="container">
+    <div class="form">
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tr><td>User Id:</td><td>@Html.TextBox("userid", "", new { id = "userid",@class="form-input" })</td><td>@Html.ValidationMessage("userid", new { style = "color: red;" })</td></tr>
+                <tr><td>Passport Id:</td><td>@Html.TextBox("passportid", "", new { id = "passportid",@class="form-input" })</td><td>@Html.ValidationMessage("passportid", new { style = "color: red;" })</td></tr>
+                <tr><td>Visa Id:</td><td>@Html.TextBox("visaid", "", new { id = "visaid",@class="form-input"})</td><td>@Html.ValidationMessage("visaid", new { style = "color: red;" })</td></tr>
+                <tr class="date" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+                    <td>Date of Cancellation:</td>
+                    <td style="position:relative;left:40px">
+                        @DateTime.Now.ToString("yyyy-MM-dd")
+                    </td>
+                <td>@Html.ValidationMessage("doc", new { style = "color: red;" })</td>
+            </tr>
+            <tr><td><input type="Submit" class="submit-button"/></td></tr>
+
+        </table>
+        if (@ViewBag.vlist != null)
+        {
+            @ViewBag.vlist;
+        }
+    }
+    </div>
+</div>

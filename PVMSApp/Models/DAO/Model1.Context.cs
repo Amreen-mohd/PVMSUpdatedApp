@@ -13,10 +13,10 @@ namespace PVMSApp.Models.DAO
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class test3Entities1 : DbContext
+    public partial class test3Entities : DbContext
     {
-        public test3Entities1()
-            : base("name=test3Entities1")
+        public test3Entities()
+            : base("name=test3Entities")
         {
         }
     
@@ -25,8 +25,12 @@ namespace PVMSApp.Models.DAO
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<city> cities { get; set; }
         public virtual DbSet<passport> passports { get; set; }
-        public virtual DbSet<user_registration> user_registration { get; set; }
+        public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<user_registration2> user_registration2 { get; set; }
         public virtual DbSet<visa> visas { get; set; }
+        public virtual DbSet<Visa_form> Visa_form { get; set; }
+        public virtual DbSet<Visa_type> Visa_type { get; set; }
     }
 }

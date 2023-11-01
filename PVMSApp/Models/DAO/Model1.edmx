@@ -4,61 +4,112 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="test3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="test3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="city_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="state_id" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="passport">
           <Key>
             <PropertyRef Name="passportId" />
           </Key>
-          <Property Name="userId" Type="nvarchar" MaxLength="50" />
-          <Property Name="country" Type="nvarchar" MaxLength="50" />
-          <Property Name="state" Type="nvarchar" MaxLength="50" />
-          <Property Name="city" Type="nvarchar" MaxLength="50" />
-          <Property Name="pin" Type="int" />
-          <Property Name="typeOfService" Type="nvarchar" MaxLength="50" />
-          <Property Name="bookletType" Type="nvarchar" MaxLength="50" />
-          <Property Name="issueDate" Type="date" />
+          <Property Name="userId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="state" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pin" Type="int" Nullable="false" />
+          <Property Name="typeOfService" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="bookletType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="issueDate" Type="date" Nullable="false" />
           <Property Name="passportId" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="expiryDate" Type="date" />
-          <Property Name="amount" Type="float" />
-          <Property Name="status" Type="nvarchar" MaxLength="50" />
+          <Property Name="expiryDate" Type="date" Nullable="false" />
+          <Property Name="amount" Type="float" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="user_registration">
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="state_id" />
+          </Key>
+          <Property Name="state_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="state_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="user_registration2">
           <Key>
             <PropertyRef Name="userId" />
           </Key>
           <Property Name="userId" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="firstName" Type="nvarchar" MaxLength="50" />
-          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="dob" Type="date" />
-          <Property Name="address" Type="nvarchar" MaxLength="100" />
-          <Property Name="contactNo" Type="int" />
-          <Property Name="email" Type="nvarchar" MaxLength="50" />
-          <Property Name="qualification" Type="nvarchar" MaxLength="50" />
-          <Property Name="gender" Type="nvarchar" MaxLength="50" />
-          <Property Name="hintQuestion" Type="nvarchar" MaxLength="500" />
-          <Property Name="hintAnswer" Type="nvarchar" MaxLength="1000" />
-          <Property Name="citizenType" Type="nvarchar" MaxLength="50" />
-          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dob" Type="date" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="contactNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="qualification" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="hintQuestion" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="hintAnswer" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="citizenType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="visa">
           <Key>
             <PropertyRef Name="visaId" />
           </Key>
-          <Property Name="userId" Type="nvarchar" MaxLength="50" />
-          <Property Name="country" Type="nvarchar" MaxLength="50" />
-          <Property Name="occupation" Type="nvarchar" MaxLength="50" />
-          <Property Name="dateOfApplication" Type="date" />
+          <Property Name="userId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="occupation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateOfApplication" Type="date" Nullable="false" />
           <Property Name="visaId" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="dateOfIssue" Type="date" />
+          <Property Name="dateOfIssue" Type="date" Nullable="false" />
           <Property Name="dateOfExpiry" Type="date" Nullable="false" />
-          <Property Name="cost" Type="float" />
-          <Property Name="passportId" Type="nvarchar" MaxLength="50" />
+          <Property Name="cost" Type="float" Nullable="false" />
+          <Property Name="passportId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'test3.dbo.Visa_form' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Visa_form">
+          <Key>
+            <PropertyRef Name="Occupation" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Validity" />
+          </Key>
+          <Property Name="Occupation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="float" Nullable="false" />
+          <Property Name="Validity" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'test3.dbo.Visa_type' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Visa_type">
+          <Key>
+            <PropertyRef Name="Occupation" />
+          </Key>
+          <Property Name="Occupation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_city_States">
+          <End Role="States" Type="Self.States" Multiplicity="0..1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="state_id" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="state_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_passport_user_registration">
-          <End Role="user_registration" Type="Self.user_registration" Multiplicity="0..1" />
+          <End Role="user_registration2" Type="Self.user_registration2" Multiplicity="1" />
           <End Role="passport" Type="Self.passport" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="user_registration">
+            <Principal Role="user_registration2">
               <PropertyRef Name="userId" />
             </Principal>
             <Dependent Role="passport">
@@ -67,10 +118,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_visa_user_registration">
-          <End Role="user_registration" Type="Self.user_registration" Multiplicity="0..1" />
+          <End Role="user_registration2" Type="Self.user_registration2" Multiplicity="1" />
           <End Role="visa" Type="Self.visa" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="user_registration">
+            <Principal Role="user_registration2">
               <PropertyRef Name="userId" />
             </Principal>
             <Dependent Role="visa">
@@ -79,81 +130,149 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="test3ModelStoreContainer">
+          <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="passport" EntityType="Self.passport" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="user_registration" EntityType="Self.user_registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_registration2" EntityType="Self.user_registration2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="visa" EntityType="Self.visa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visa_form" EntityType="Self.Visa_form" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Visa_form].[Occupation] AS [Occupation], 
+    [Visa_form].[Country] AS [Country], 
+    [Visa_form].[Amount] AS [Amount], 
+    [Visa_form].[Validity] AS [Validity]
+    FROM [dbo].[Visa_form] AS [Visa_form]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Visa_type" EntityType="Self.Visa_type" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Visa_type].[Occupation] AS [Occupation], 
+    [Visa_type].[Country] AS [Country]
+    FROM [dbo].[Visa_type] AS [Visa_type]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_city_States" Association="Self.FK_city_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="city" EntitySet="city" />
+          </AssociationSet>
           <AssociationSet Name="FK_passport_user_registration" Association="Self.FK_passport_user_registration">
-            <End Role="user_registration" EntitySet="user_registration" />
+            <End Role="user_registration2" EntitySet="user_registration2" />
             <End Role="passport" EntitySet="passport" />
           </AssociationSet>
           <AssociationSet Name="FK_visa_user_registration" Association="Self.FK_visa_user_registration">
-            <End Role="user_registration" EntitySet="user_registration" />
+            <End Role="user_registration2" EntitySet="user_registration2" />
             <End Role="visa" EntitySet="visa" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="test3Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="state_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="State" Relationship="Self.FK_city_States" FromRole="city" ToRole="States" />
+        </EntityType>
         <EntityType Name="passport">
           <Key>
             <PropertyRef Name="passportId" />
           </Key>
-          <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="pin" Type="Int32" />
-          <Property Name="typeOfService" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="bookletType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="issueDate" Type="DateTime" Precision="0" />
+          <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pin" Type="Int32" Nullable="false" />
+          <Property Name="typeOfService" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="bookletType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="issueDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="passportId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="expiryDate" Type="DateTime" Precision="0" />
-          <Property Name="amount" Type="Double" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user_registration" Relationship="Self.FK_passport_user_registration" FromRole="passport" ToRole="user_registration" />
+          <Property Name="expiryDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="amount" Type="Double" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user_registration2" Relationship="Self.FK_passport_user_registration" FromRole="passport" ToRole="user_registration2" />
         </EntityType>
-        <EntityType Name="user_registration">
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="state_id" />
+          </Key>
+          <Property Name="state_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="state_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cities" Relationship="Self.FK_city_States" FromRole="States" ToRole="city" />
+        </EntityType>
+        <EntityType Name="user_registration2">
           <Key>
             <PropertyRef Name="userId" />
           </Key>
           <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dob" Type="DateTime" Precision="0" />
-          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="contactNo" Type="Int32" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="hintQuestion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="hintAnswer" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="citizenType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="passports" Relationship="Self.FK_passport_user_registration" FromRole="user_registration" ToRole="passport" />
-          <NavigationProperty Name="visas" Relationship="Self.FK_visa_user_registration" FromRole="user_registration" ToRole="visa" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dob" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="contactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hintQuestion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="hintAnswer" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="citizenType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="passports" Relationship="Self.FK_passport_user_registration" FromRole="user_registration2" ToRole="passport" />
+          <NavigationProperty Name="visas" Relationship="Self.FK_visa_user_registration" FromRole="user_registration2" ToRole="visa" />
         </EntityType>
         <EntityType Name="visa">
           <Key>
             <PropertyRef Name="visaId" />
           </Key>
-          <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="dateOfApplication" Type="DateTime" Precision="0" />
+          <Property Name="userId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateOfApplication" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="visaId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="dateOfIssue" Type="DateTime" Precision="0" />
+          <Property Name="dateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="dateOfExpiry" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="cost" Type="Double" />
-          <Property Name="passportId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="user_registration" Relationship="Self.FK_visa_user_registration" FromRole="visa" ToRole="user_registration" />
+          <Property Name="cost" Type="Double" Nullable="false" />
+          <Property Name="passportId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user_registration2" Relationship="Self.FK_visa_user_registration" FromRole="visa" ToRole="user_registration2" />
         </EntityType>
+        <EntityType Name="Visa_form">
+          <Key>
+            <PropertyRef Name="Occupation" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Validity" />
+          </Key>
+          <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Validity" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Visa_type">
+          <Key>
+            <PropertyRef Name="Occupation" />
+          </Key>
+          <Property Name="Occupation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_city_States">
+          <End Role="States" Type="Self.State" Multiplicity="0..1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="state_id" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="state_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_passport_user_registration">
-          <End Role="user_registration" Type="Self.user_registration" Multiplicity="0..1" />
+          <End Role="user_registration2" Type="Self.user_registration2" Multiplicity="1" />
           <End Role="passport" Type="Self.passport" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="user_registration">
+            <Principal Role="user_registration2">
               <PropertyRef Name="userId" />
             </Principal>
             <Dependent Role="passport">
@@ -162,10 +281,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_visa_user_registration">
-          <End Role="user_registration" Type="Self.user_registration" Multiplicity="0..1" />
+          <End Role="user_registration2" Type="Self.user_registration2" Multiplicity="1" />
           <End Role="visa" Type="Self.visa" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="user_registration">
+            <Principal Role="user_registration2">
               <PropertyRef Name="userId" />
             </Principal>
             <Dependent Role="visa">
@@ -173,16 +292,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="test3Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="test3Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cities" EntityType="Self.city" />
           <EntitySet Name="passports" EntityType="Self.passport" />
-          <EntitySet Name="user_registration" EntityType="Self.user_registration" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="user_registration2" EntityType="Self.user_registration2" />
           <EntitySet Name="visas" EntityType="Self.visa" />
+          <EntitySet Name="Visa_form" EntityType="Self.Visa_form" />
+          <EntitySet Name="Visa_type" EntityType="Self.Visa_type" />
+          <AssociationSet Name="FK_city_States" Association="Self.FK_city_States">
+            <End Role="States" EntitySet="States" />
+            <End Role="city" EntitySet="cities" />
+          </AssociationSet>
           <AssociationSet Name="FK_passport_user_registration" Association="Self.FK_passport_user_registration">
-            <End Role="user_registration" EntitySet="user_registration" />
+            <End Role="user_registration2" EntitySet="user_registration2" />
             <End Role="passport" EntitySet="passports" />
           </AssociationSet>
           <AssociationSet Name="FK_visa_user_registration" Association="Self.FK_visa_user_registration">
-            <End Role="user_registration" EntitySet="user_registration" />
+            <End Role="user_registration2" EntitySet="user_registration2" />
             <End Role="visa" EntitySet="visas" />
           </AssociationSet>
         </EntityContainer>
@@ -191,7 +318,16 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="test3ModelStoreContainer" CdmEntityContainer="test3Entities1">
+        <EntityContainerMapping StorageEntityContainer="test3ModelStoreContainer" CdmEntityContainer="test3Entities">
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="test3Model.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="state_id" ColumnName="state_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="passports">
             <EntityTypeMapping TypeName="test3Model.passport">
               <MappingFragment StoreEntitySet="passport">
@@ -210,9 +346,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="user_registration">
-            <EntityTypeMapping TypeName="test3Model.user_registration">
-              <MappingFragment StoreEntitySet="user_registration">
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="test3Model.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="state_id" ColumnName="state_id" />
+                <ScalarProperty Name="state_name" ColumnName="state_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_registration2">
+            <EntityTypeMapping TypeName="test3Model.user_registration2">
+              <MappingFragment StoreEntitySet="user_registration2">
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="firstName" ColumnName="firstName" />
                 <ScalarProperty Name="lastName" ColumnName="lastName" />
@@ -241,6 +385,25 @@
                 <ScalarProperty Name="dateOfExpiry" ColumnName="dateOfExpiry" />
                 <ScalarProperty Name="cost" ColumnName="cost" />
                 <ScalarProperty Name="passportId" ColumnName="passportId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visa_form">
+            <EntityTypeMapping TypeName="test3Model.Visa_form">
+              <MappingFragment StoreEntitySet="Visa_form">
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Validity" ColumnName="Validity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visa_type">
+            <EntityTypeMapping TypeName="test3Model.Visa_type">
+              <MappingFragment StoreEntitySet="Visa_type">
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
